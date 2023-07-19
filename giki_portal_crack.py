@@ -75,8 +75,9 @@ def launchAttack(studentRegNumber: str, dateOfBirths: list) -> None:
 
 def main():
 
-    studentRegNumber = "2020474"
-    startDate = "2002-11-01"
+    # I have changed pw already ;)
+    studentRegNumber = "2020244"
+    startDate = "2001-01-01"
     endDate = "2002-12-30"
     datesGenerated = []
 
